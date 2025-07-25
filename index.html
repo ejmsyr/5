@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cannabis Strain Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Main header -->
+      <header class="app-header">
+        <h1>Cannabis Strain Tracker</h1>
+      </header>
+
+      <!-- Home / Dashboard -->
+      <section id="home" class="page active">
+        <div class="page-content">
+          <h2>Recent Logs</h2>
+          <ul id="logs-list" class="logs-list"></ul>
+          <div id="no-logs-message" class="empty-state hidden">
+            <p>You haven't logged any strains yet.</p>
+            <button id="go-to-log-btn" class="primary-btn">Log your first strain</button>
+          </div>
+          <!-- Quick stats -->
+          <div id="stats" class="stats hidden">
+            <h3>Quick Stats</h3>
+            <p><strong>Favorite Strain:</strong> <span id="stat-fav-strain">—</span></p>
+            <p><strong>Favorite Terpene:</strong> <span id="stat-fav-terpene">—</span></p>
+            <p><strong>Most Common Effect:</strong> <span id="stat-fav-effect">—</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Log Strain -->
+      <section id="log" class="page">
+        <div class="page-content">
+          <h2>Log a Strain</h2>
+          <form id="log-form">
+            <div class="form-group">
+              <label for="strain-name">Strain Name</label>
+              <input
+                type="text"
+                id="strain-name"
+                name="strain-name"
+                list="strain-options"
+                placeholder="Enter or select a strain"
+                required
+              />
+              <datalist id="strain-options"></datalist>
+            </div>
+            <div class="form-group">
+              <label>Terpenes</label>
+              <div id="terpene-list" class="terpene-list"></div>
+              <input
+                type="text"
+                id="new-terpene-input"
+                placeholder="Add custom terpene"
+              />
+              <button type="button" id="add-terpene-btn" class="secondary-btn">Add Terpene</button>
+            </div>
+            <div class="form-group">
+              <label>Effects (0–10)</label>
+              <div id="effects-inputs" class="effects-inputs"></div>
+            </div>
+            <div class="form-group">
+              <label for="potency">Overall Potency (0–10)</label>
+              <input type="range" id="potency" name="potency" min="0" max="10" step="1" value="5" />
+              <span id="potency-value">5</span>
+            </div>
+            <button type="submit" class="primary-btn">Save Log</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Recommendation -->
+      <section id="recommend" class="page">
+        <div class="page-content">
+          <h2>Find a Match</h2>
+          <div id="recommend-inputs" class="effects-inputs"></div>
+          <button id="get-recommendations-btn" class="primary-btn">Get Recommendations</button>
+          <div id="recommend-results" class="recommend-results"></div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings" class="page">
+        <div class="page-content">
+          <h2>Settings</h2>
+          <button id="export-btn" class="secondary-btn">Export Data</button>
+          <input type="file" id="import-input" accept="application/json" class="hidden" />
+          <button id="import-btn" class="secondary-btn">Import Data</button>
+          <button id="clear-data-btn" class="danger-btn">Clear All Data</button>
+          <p class="small-text">Your data is stored only on your device.</p>
+        </div>
+      </section>
+
+      <!-- Bottom Navigation -->
+      <nav class="bottom-nav">
+        <button data-target="home" class="nav-item active">🏠<span>Home</span></button>
+        <button data-target="log" class="nav-item">📝<span>Log</span></button>
+        <button data-target="recommend" class="nav-item">🔍<span>Match</span></button>
+        <button data-target="settings" class="nav-item">⚙️<span>Settings</span></button>
+      </nav>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
